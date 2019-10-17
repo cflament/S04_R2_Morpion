@@ -21,7 +21,7 @@ class Player
 
     # Player got to choose the box where he wants to add his symbol
     def box_choice(available_boxes_names)
-        puts "#{@name}, your turn to chose the Box where you want to add #{@symbol} : "
+        puts "\n#{@name}, your turn to chose the Box where you want to add #{@symbol} : "
         puts "the remaining boxes are : #{available_boxes_names}"
         hit = ""
         #récupération de l'input de l'utilisateur, en vérifiant que la case choisie est vide

@@ -8,46 +8,25 @@ require_relative 'lib/player'
 require_relative 'lib/game'
 
 #Crée un Game
-game = Game.new
+user_enthousiasm = true 
+while user_enthousiasm do 
+    #joue
+    game = Game.new
+    game.perform
+    game.end
 
-#boucle qui simule les tours : 
-#a chaque tour : 
+    #Demande à l'utilisateur s'il veut rejouer
+    puts "Do you want to play again ? [y/n]"
+    input = gets.chomp
+    if input == "y"
+        puts "If you're still enthousiast, then lets play again !"
+        user_enthousiasm = true
+    elsif input == "n"
+        puts "OK, have a good day, Bro !"
+        user_enthousiasm = false
+    else 
+        puts "I'll take this as a NO. Ciaooooo"
+        user_enthousiasm = fasle
 
-    #demande au premier joueur sa case en lui listant les cases vides
-
-    while game.has_winner == false && game.board.available_boxes_names.size != 0
-
-        [game.player1,game.player2].each do |player|
-            if game.has_winner == false && game.board.available_boxes_names.size != 0
-                box_name = player.box_choice(game.board.available_boxes_names)
-                box = game.board.content_array.find {|box| box.name == box_name}
-                box.content = player.symbol
-                game.board.available_boxes_names.delete(box_name)
-                puts "available boxes : #{game.board.available_boxes_names}"
-                game.board.display
-                game.update_winner
-            end           
-        end
-    end  
-
-    if game.has_winner == false && game.board.available_boxes_names.size == 0
-        puts "Drow !"
     end 
-    #puts "Do you want to play again ?"
-    
-
-    #met son symbole dedans
-    #ajoute le nom de cette case à son hit_box_array pour historiser son coup
-    #player.play ---------------
-    #affiche la grille
-    #teste si le joueur a une des combi gagnantes
-    #si ce n'est pas le cas,
-        #si aucune case ne contient " ", stop
-        #sinon continue, 
-    #sinon fin de la partie
-    
-    #[same bloc pour le deuxième joueur]
-
-#fin de la partie : affiche qui a gagné
-#affiche la grille
-#propose de rejouer
+end 
